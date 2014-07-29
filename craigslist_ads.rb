@@ -20,7 +20,7 @@ require 'rest-client'
 #end
 #
 class Craigslist
-	def initialize(query, city, rescnt=0)	
+	def initialize(query, city, rescnt=0)
     	@query = query
     	@city  = city
 
@@ -60,7 +60,7 @@ rows.each do |row|
 	pt = row.search('a')[1].inner_text
 	pl = row.search("//a")[0].attributes['href']
 	pd = row.search("//span[@class='date']").inner_text
-	puts "#{pt} (#{pl}) on #{pd}\n"
+	puts "#{@iteration}.[#{@site}] #{pt} (#{pl}) on #{pd}\n"
 
 	# .-------------------------------------------------------------------------------.
 	# Hook Up to API (Stage 1)

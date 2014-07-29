@@ -1,8 +1,8 @@
 require 'rubygems'
 require 'nokogumbo'
 
-@path     = ARGV[1]
-@site     = ARGV[0]
+@path     = ARGV[0]
+@site     = ARGV[1]
 
 uri = "http://#{@site}.craigslist.org#{@path}"
 
