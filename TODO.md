@@ -15,6 +15,10 @@ This works well right now for minimum viability.
 ## Purpose
 * Holds ads pushed into system from `index.rb` on initial crawling.
 
+## Increase Documentation
+* @todo http://www.keyboardninja.eu/programming/list-all-controllers-in-cakephp-2
+* @todo Put Table Schemas at top of Model files in DocBlock.
+
 craigslist-contents
 -------------------
 
