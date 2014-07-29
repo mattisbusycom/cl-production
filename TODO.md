@@ -19,6 +19,9 @@ This works well right now for minimum viability.
 * @todo http://www.keyboardninja.eu/programming/list-all-controllers-in-cakephp-2
 * @todo Put Table Schemas at top of Model files in DocBlock.
 
+* @todo root@(none):/home/www/jobs.spclops.com/public_html/app# vi View/Layouts/ng.ctp
+**  zero to app bootstrapping angular: @todo https://www.youtube.com/watch?v=Mi14KwP1TyM
+
 craigslist-contents
 -------------------
 

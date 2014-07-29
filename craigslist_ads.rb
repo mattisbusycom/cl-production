@@ -54,21 +54,28 @@ end
 runner = Craigslist.new("#{@search}", "#{@site}", "#{@iteration}")
 
 url  = runner.get_url()
-rows = runner.getDoc(url)
 
-rows.each do |row|
-	pt = row.search('a')[1].inner_text
-	pl = row.search("//a")[0].attributes['href']
-	pd = row.search("//span[@class='date']").inner_text
-	puts "#{@iteration}.[#{@site}] #{pt} (#{pl}) on #{pd}\n"
+urls = ["#{url}"]
+urls.each do |url|
+    puts url
+    ## Get Hpricot Document
+    rows = runner.getDoc(url)
 
-	# .-------------------------------------------------------------------------------.
-	# Hook Up to API (Stage 1)
-	data = {}
-	data["post_title"] = pt
-	data["post_url"]   = pl
-	data["post_dated"] = pd
+    ## Each Post Listing Entry on Craigslist Search Result Page ("SERP")
+    rows.each do |row|
+    	pt = row.search('a')[1].inner_text
+    	pl = row.search("//a")[0].attributes['href']
+    	pd = row.search("//span[@class='date']").inner_text
+    	puts "#{@iteration}.[#{@site}] #{pt} (#{pl}) on #{pd}\n"
 
-	RestClient.post "http://jobs.spclops.com/craigslist_ads/add", data.to_json, :content_type => :json, :accept => :json
-	# .-------------------------------------------------------------------------------.
+    	# .-------------------------------------------------------------------------------.
+    	# Hook Up to API (Stage 1)
+    	data = {}
+    	data["post_title"] = pt
+    	data["post_url"]   = pl
+    	data["post_dated"] = pd
+           
+        RestClient.post "http://jobs.spclops.com/craigslist_ads/add", data.to_json, :content_type => :json, :accept => :json
+    	# .-------------------------------------------------------------------------------.
+    end
 end
